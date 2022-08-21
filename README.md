@@ -1,8 +1,6 @@
-# drawdown
+# bs-drawdown
 
----
-
-Tiny but reliable Markdown to HTML conversion in JavaScript
+Tiny Markdown to HTML conversion in JavaScript, optionally Bootstrap styled.
 
 Supported Markdown features:
 
@@ -32,11 +30,21 @@ Fenced code blocks
 | Cell 4 | Cell 5 | Cell 6 |
 | Cell 7 | Cell 8 | Cell 9 |
 
-[Links](https://github.com/adamvleggett/drawdown)
+[Links](https://github.com/JulienChebance/bs-drawdown)
+
+Fuzzy links:  
+https://odt.space.  
+www.odt.space  
+`http://disabled.link.com`
+
+Variable links:  
+[Wikipedia] is a free online encyclopedia, created and edited by volunteers around the world and hosted by the [Wikimedia Foundation].
+[wikipedia]: https://www.wikipedia.org
+[wikimedia foundation]: https://wikimediafoundation.org
 
 Images:
 
-![Images](https://img.icons8.com/ios/452/stack-of-photos.png)
+![Images](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)
 
 ---
 
@@ -57,6 +65,7 @@ These are the supported features:
 - Subscript
 - Horizontal rule
 - Tables
+- Link variables
 
 Unsupported Markdown features at this time:
 
@@ -66,6 +75,11 @@ Unsupported Markdown features at this time:
 - Twitter/Facebook/YouTube embed
 - Inline math equations
 
-To use:
+##### Usage
 
-    element.innerHTML = markdown(text);
+    import markdown from './bs-drawdown.js'
+    element.innerHTML = markdown(text)
+
+##### License
+
+[MIT](LICENSE)
