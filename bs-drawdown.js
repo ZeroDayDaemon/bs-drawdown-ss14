@@ -100,7 +100,6 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 
 	// fuzzy link
 	src = src.replace(rx.fuzzy_link, (all, p1, p2, p3) => {
-console.log(all, p2, p3)
 		stash[--si] = element('a', unesc(highlight(p2 || p3)), {href: p2?p2:`https://${p3}`})
 		return si + '\uf8ff';
 	})

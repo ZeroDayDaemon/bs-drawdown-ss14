@@ -17,12 +17,12 @@
 	<div class="markdown position-absolute start-50 w-50 h-100 px-2 overflow-auto"></div>
 
 	<script type="module">
-		import markdown from './bs-drawdown.js'
+		import markdown from 'https://julienchebance.github.io/bs-drawdown/bs-drawdown.min.js'
 
 		const ein = document.querySelector('.plain')
 		const eout = document.querySelector('.markdown')
 
-		ein.innerHTML = await fetch('./README.md').then((res) => res.text())
+		ein.innerHTML = await fetch('https://julienchebance.github.io/bs-drawdown/README.md').then((res) => res.text())
 
 		const update = () => eout.innerHTML = markdown(ein.value)
 		ein.addEventListener('input', update)
