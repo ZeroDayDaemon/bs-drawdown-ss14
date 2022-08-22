@@ -7,7 +7,7 @@
  * Fuzzy links from Max van der Schee (aka mvdschee) fork
  */
 
-const bootstrapClasses = {
+ const bootstrapClasses = {
 	blockquote: 'border-start border-3 ps-4 py-2 mt-3',
 	h1: 'pb-2 border-bottom border-dark border-opacity-25',
 	pre: 'bg-light py-1 px-3 fs-6',
@@ -18,7 +18,8 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 	const rx = {
 		lt: /</g,
 		gt: />/g,
-		space: /\t|\r|\uf8ff/g,
+		CR: /\r(?=\n)/g,
+		space: /\t|\uf8ff/g,
 		escape: /\\([\\\|`*_{}\[\]()#+\-~])/g,
 		hr: /^([*\-=_] *){3,}$/gm,
 		blockquote: /\n *&gt; *([^]*?)(?=(\n|$){2})/g,
@@ -62,9 +63,9 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 
 	const unesc = (str) => str.replace(rx.escape, '$1')
 
-	let stash = [], si = 0, link_var = {}
+	let stash = [], si = 0
 
-	src = `\n${src}\n`.replace(rx.lt, '&lt;').replace(rx.gt, '&gt;').replace(rx.space, '  ')
+	src = `\n${src}\n`.replace(rx.lt, '&lt;').replace(rx.gt, '&gt;').replace(rx.CR, '').replace(rx.space, '  ')
 
 	// blockquote
 	src = blockquote(src);
