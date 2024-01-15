@@ -94,7 +94,7 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 		stash[--si] = p4
 			? p2
 				? `<img src="${p4}" alt="${p3}"/>`
-				: element('a', unesc(highlight(p3)), {href: p4, target: new URL(p2?p2:`https://${p3}`).host != location.host?'_blank':undefined})
+				: element('a', unesc(highlight(p3)), {href: p4, target: new URL(p4).host != location.host?'_blank':undefined})
 			: p6;
 		return si + '\uf8ff'
 	})
