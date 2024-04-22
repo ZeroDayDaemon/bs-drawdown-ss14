@@ -14,7 +14,7 @@
  const bootstrapClasses = {
 	blockquote: 'border-start border-3 ps-4 py-2 mt-3',
 	h1: 'pb-2 border-bottom border-dark border-opacity-25',
-	pre: 'bg-light py-1 px-3 fs-6',
+	pre: 'py-1 px-3 fs-6',
 	table: 'table',
 }
 
