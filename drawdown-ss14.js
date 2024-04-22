@@ -99,14 +99,14 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 		stash[--si] = p4
 			? p2
 				? `<img src="${p4}" alt="${p3}"/>`
-				: element('a', unesc(highlight(p3)), {href: p4})
+				: element('a', unesc(highlight(p3)), {href: p4, target: new URL(p4).host != location.host?'_blank':undefined})
 			: p6;
 		return si + '\uf8ff'
 	})
 
 	// fuzzy link
 	src = src.replace(rx.fuzzy_link, (all, p1, p2, p3) => {
-		stash[--si] = element('a', unesc(highlight(p2 || p3)), {href: p2?p2:`https://${p3}`})
+		stash[--si] = element('a', unesc(highlight(p2 || p3)), {href: p2?p2:`https://${p3}`, target: new URL(p2?p2:`https://${p3}`).host != location.host?'_blank':undefined})
 		return si + '\uf8ff';
 	})
 
