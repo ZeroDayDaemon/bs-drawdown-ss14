@@ -1,6 +1,8 @@
-# bs-drawdown
+# drawdown-ss14
 
-Tiny Markdown to HTML conversion in JavaScript, optionally Bootstrap styled.
+
+Tiny Markdown to HTML conversion in JavaScript, optionally Bootstrap styled, compatible with Space Station 14 Markdown.
+drawdown-ss14 is intended to be used to directly take the rules.txt from a Github repository and display it on a webpage.
 
 Supported Markdown features:
 
@@ -18,10 +20,10 @@ Fenced code blocks
     Indented code blocks
 
 1. Numbered lists
-  - Unordered lists
-  - Nested in other lists
-    a. Lettered lists are an extension to the spec.
-    b. They may be useful for legal documents.
+- Unordered lists
+- Nested in other lists
+  a. Lettered lists are an extension to the spec.
+  b. They may be useful for legal documents.
 2. Another entry in my numbered list.
 
 | Tables | Tables | Tables |
@@ -48,6 +50,13 @@ Images:
 
 ---
 
+Color Tags:
+
+Color tags following the Space Station 14 Markdown are available.
+
+[color=#ff0000]Red[/color] and [color=#00ff00]Green[/color] and [color=#0000ff]Blue[/color]
+
+
 ### Summary...
 
 These are the supported features:
@@ -66,6 +75,7 @@ These are the supported features:
 - Horizontal rule
 - Tables
 - Link variables
+- Color tags
 
 Unsupported Markdown features at this time:
 
@@ -77,7 +87,7 @@ Unsupported Markdown features at this time:
 
 ##### Usage
 
-    import markdown from './bs-drawdown.js'
+    import markdown from './drawdown-ss14.js'
     element.innerHTML = markdown(text)
 
 ##### License

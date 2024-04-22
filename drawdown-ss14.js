@@ -1,9 +1,13 @@
 /**
- * bs-drawdown.js
+ * drawdown-ss14.js
+ * (c) 2023 ZeroDayDaemon
+ *
+ * Fork of bs-drawdown.js
  * (c) 2022 Julien Chebance
  *
- * Based on drawdown.js
+ * Which itself is a fork of drawdown.js
  * (c) 2016 Adam Leggett
+ *
  * Fuzzy links from Max van der Schee (aka mvdschee) fork
  */
 
@@ -16,7 +20,7 @@
 
 export default function(src, customClasses = {}, bootstrapStyled = getComputedStyle(document.documentElement).getPropertyValue('--bs-primary') != '') {
 	const rx = {
-		lt: /</g,
+		lt: /</g,	
 		gt: />/g,
 		CR: /\r(?=\n)/g,
 		space: /\t|\uf8ff/g,
@@ -38,6 +42,7 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 		paragraph: /(?=^|>|\n)\s*\n+([^<]+?)\n+\s*(?=\n|<|$)/g,
 		line_break: /  $/gm,
 		stash: /-\d+\uf8ff/g,
+		color: /(\[color=(#[0-9a-fA-F]{6})\])([\s\S]*?)(\[\/color\])/g,
 	}
 
 	const classes = (tag) => ((customClasses[tag] || '') + ' ' + (bootstrapStyled?bootstrapClasses[tag] || '':'')).trim() || undefined
@@ -102,6 +107,12 @@ export default function(src, customClasses = {}, bootstrapStyled = getComputedSt
 	// fuzzy link
 	src = src.replace(rx.fuzzy_link, (all, p1, p2, p3) => {
 		stash[--si] = element('a', unesc(highlight(p2 || p3)), {href: p2?p2:`https://${p3}`})
+		return si + '\uf8ff';
+	})
+
+	// color tag
+	src = src.replace(rx.color, (all, p1, p2, p3, p4) => {
+		stash[--si] = element('span', unesc(highlight(p3)), {style: 'color:' + p2})
 		return si + '\uf8ff';
 	})
 
