@@ -36,7 +36,7 @@ Fenced code blocks
 
 Fuzzy links:  
 https://example.com.  
-www.example.com
+www.example.com  
 `http://disabled.example.com`
 
 Variable links:  
